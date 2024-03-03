@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic</title>
+</head>
+<body>
+    <h1>SONIC</h1>
+    <form action="#" method="post">
+        <input type="text" name="search" value="Search here">
+        <div class="search-results"></div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+  $(document).ready(function(){
+    let query = $("input[name='search']");
+    let searchResult = {};
+    query.on('input', function(){
+        $.ajax({
+            url:"{% url 'Search' %}",
+            type: "POST",
+            data: {
+                "query": $(this).val()
+            },
+            success: function(data) {
+                console.log(data);
+                if(!data.searchResults.error){
+                    searchResult = data.searchResults.tracks.items;
+
+                    $('.search-results').empty();
+                    searchResult?.forEach(element => {
+                        $('.search-results').append(`<a href='/track/${element.id}'>${element.name}</a>`)                         
+         
+                });
+                }else{
+                    $('.search-results').empty();
+                }
+                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error:", textStatus, errorThrown);
+            }
+        }); 
+    });
+});
+
+
+
+        
+        // let client_token = "";
+        // $.ajax({
+        //         url: "https://accounts.spotify.com/api/token",
+        //         type: "POST",
+        //         data: {
+        //             grant_type: "client_credentials",
+        //             client_id: "08de4eaf71904d1b95254fab3015d711",
+        //             client_secret: "622b4fbad33947c59b95a6ae607de11d"
+        //         },
+        //         success: function(data) {
+        //             console.log(data.access_token);
+        //             client_token = data.access_token;
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown) {
+        //             console.error("Error:", textStatus, errorThrown);
+        //         }
+        //     });
+        
+
+    </script>
+</body>
+</html>
