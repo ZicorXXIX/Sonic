@@ -30,13 +30,11 @@
 
                     $('.search-results').empty();
                     searchResult?.forEach(element => {
-                        $('.search-results').append(`<a href='/track/${element.id}'>${element.name}</a>`)                         
-         
+                        $('.search-results').append(`<a href='/track/${element.id}'>${element.name}</a>`)   
                 });
                 }else{
                     $('.search-results').empty();
-                }
-                
+                }                
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error("Error:", textStatus, errorThrown);
