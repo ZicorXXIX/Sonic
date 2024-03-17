@@ -1,113 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonic</title>
     <style>
-       body {
-    background-color: black;
-    display: flex;
-    flex-direction: column; /* Align children vertically */
-    justify-content: center;
-    align-items: center;  
-    height: 100vh;
-    overflow: hidden;       
-}
+      body {
+        background-color: black;
+        display: flex;
+        flex-direction: column; /* Align children vertically */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
 
-.searchbar {
-    display: block;
-    margin: 0 auto;
-    width: 50%;                  
-}
+      .searchbar {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+      }
 
-.searchbar > input {
-    border: 1px solid grey;
-    border-radius: 5px;
-    height: 40px;
-    width: 100%;
-    padding: 0 20px;
-    outline: 0;
-    background-color: #f5f5f5;
-}
+      .searchbar > input {
+        border: 1px solid grey;
+        border-radius: 5px;
+        height: 40px;
+        width: 100%;
+        padding: 0 20px;
+        outline: 0;
+        background-color: #f5f5f5;
+      }
 
-.search-results {
-    display: block;
-    margin: 0 auto;
-    width: 50%;      
-}
-.searchresult{
+      .search-results {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+      }
+      .sc-poster {
+        float: left;
+        width: 64px;
+      }
 
-}
+      a {
+        width: 290px;
+      }
+      .sc-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
 
+      .sc-details {
+        display: flex;
+        width: 300px;
+        justify-content: space-between;
+      }
 
+      .center {
+        display: flex;
+        align-items: center;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>SONIC</h1>
     <!-- <form action="#" method="post"> -->
-        <div class="searchbar">
-            <input type="text" name="search" value="Search here">            
-        </div>
-        <div class="search-results"></div>
+    <div class="searchbar">
+      <input type="text" name="search" value="Search here" />
+    </div>
+    <div class="search-results"></div>
     <!-- </form> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-  $(document).ready(function(){
-    let query = $("input[name='search']");
-    let searchResult = {};
-    query.on('input', function(){
-        $.ajax({
-            url:"{% url 'Search' %}",
-            type: "POST",
+      $(document).ready(function () {
+        let query = $("input[name='search']");
+        let searchResult = {};
+        query.on('input', function () {
+          $.ajax({
+            url: "{% url 'Search' %}",
+            type: 'POST',
             data: {
-                "query": $(this).val()
+              query: $(this).val(),
             },
-            success: function(data) {
-                console.log(data);
-                if(!data.searchResults.error){
-                    searchResult = data.searchResults.tracks.items;
+            success: function (data) {
+              console.log(data);
+              if (!data.searchResults.error) {
+                searchResult = data.searchResults.tracks.items;
 
-                    $('.search-results').empty();
-                    searchResult?.forEach(element => {
-                        $('.search-results').append(`<div class='serachresult'>
-                            <img src='${element.album.images[2].url}' alt=''>
-                            <a href='/track/${element.id}'>${element.name}</a>
-                            </div>`)   
+                $('.search-results').empty();
+                searchResult?.forEach(element => {
+                  $('.search-results').append(`<div class='serachresult'>
+                            <a href='/track/${element.id}'>
+                                    <div class="sc-poster">
+                                        <img class="sc-img"
+                                    src='${element.album.images[2].url}'>
+                                    </div>
+                                    
+                                    <div class="sc-details">
+                                        <div> <h3> ${element.name}<h3>
+                                        <span>Hamilton</span></div>
+                                    <div class="center"><span class="playtime">3.40</span></div>
+                                    </div>
+                                    </a>
+                            </div>`);
                 });
-                }else{
-                    $('.search-results').empty();
-                }                
+              } else {
+                $('.search-results').empty();
+              }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error("Error:", textStatus, errorThrown);
-            }
-        }); 
-    });
-});
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.error('Error:', textStatus, errorThrown);
+            },
+          });
+        });
+      });
 
-
-
-        
-        // let client_token = "";
-        // $.ajax({
-        //         url: "https://accounts.spotify.com/api/token",
-        //         type: "POST",
-        //         data: {
-        //             grant_type: "client_credentials",
-        //             client_id: "08de4eaf71904d1b95254fab3015d711",
-        //             client_secret: "622b4fbad33947c59b95a6ae607de11d"
-        //         },
-        //         success: function(data) {
-        //             console.log(data.access_token);
-        //             client_token = data.access_token;
-        //         },
-        //         error: function(jqXHR, textStatus, errorThrown) {
-        //             console.error("Error:", textStatus, errorThrown);
-        //         }
-        //     });
-        
-
+      // let client_token = "";
+      // $.ajax({
+      //         url: "https://accounts.spotify.com/api/token",
+      //         type: "POST",
+      //         data: {
+      //             grant_type: "client_credentials",
+      //             client_id: "08de4eaf71904d1b95254fab3015d711",
+      //             client_secret: "622b4fbad33947c59b95a6ae607de11d"
+      //         },
+      //         success: function(data) {
+      //             console.log(data.access_token);
+      //             client_token = data.access_token;
+      //         },
+      //         error: function(jqXHR, textStatus, errorThrown) {
+      //             console.error("Error:", textStatus, errorThrown);
+      //         }
+      //     });
     </script>
-</body>
+  </body>
 </html>

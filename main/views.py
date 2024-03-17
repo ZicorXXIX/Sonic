@@ -6,7 +6,7 @@ from django.http import JsonResponse
 import requests
 
 def home(request):
-    template = loader.get_template('homepage.html')
+    template = loader.get_template('index.html')
     return HttpResponse(template.render())
 @csrf_exempt
 def search(request):
@@ -34,9 +34,10 @@ def getSpotifyAccessToken():
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         data = {
                 "grant_type": "client_credentials",
-                "client_id": "08de4eaf71904d1b95254fab3015d711",
-                "client_secret": "622b4fbad33947c59b95a6ae607de11d"
+                "client_id": "f9257cdf01df46e69038ce898e4e14c4",
+                "client_secret": "f97f24f668594b518b88fc81757e06b1"
                }
         response = requests.post(url, headers=headers, data=data)
+        print(response.json())
         token = response.json()['access_token']
         return token

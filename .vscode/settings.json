@@ -1,0 +1,23 @@
+{
+  "workbench.iconTheme": "quill-icons",
+  "workbench.colorTheme": "Dracula",
+  "editor.fontFamily": "'Fira Code', 'Monaco', 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.disableLanguages": ["prisma"],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.startupEditor": "newUntitledFile",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "files.associations": {
+    "*.prisma": "prisma"
+  }
+}
