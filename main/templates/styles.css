@@ -1,5 +1,6 @@
 body {
-  background-color: black;
+  background-color: rgb(19 19 19 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 1;
 }
 
 .sc-poster {

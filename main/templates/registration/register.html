@@ -1,0 +1,195 @@
+<!-- templates/registration/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="" />
+    <title>Login</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    * {
+      font-family: 'Gotham Rounded Book', 'sans-serif';
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      color: #eee;
+    }
+
+    ::selection {
+      background: 0;
+    }
+
+    body {
+      width: 100%;
+      min-height: 560px;
+      height: 100vh;
+      display: grid;
+      place-content: center;
+      background: #1e6bd7;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-width: 450px;
+      min-height: 620px;
+      padding: 15px;
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      border-radius: 10px;
+      background: #2c2d31;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #logo {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      margin: 30px;
+    }
+
+    nav {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav label {
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    nav label:first-child {
+      margin-right: 20px;
+    }
+
+    form {
+      position: absolute;
+      min-width: 320px;
+      transform: translatex(140%);
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
+    }
+
+    #SignIn:checked ~ section #SignInFormData,
+    #SignUp:checked ~ section #SignUpFormData {
+      transform: translatex(15%);
+    }
+
+    #SignIn:checked ~ section nav label:first-child,
+    #SignUp:checked ~ section nav label:last-child {
+      margin-bottom: -2px;
+      border-bottom: 2px solid #1ed760;
+    }
+
+    input,
+    button {
+      color: #111;
+      border-radius: 50px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    button {
+      background: #2d1ed7;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    form span {
+      margin-left: 20px;
+      display: inline;
+    }
+
+    form span label {
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: lowercase;
+    }
+
+    input[type='checkbox'] {
+      cursor: pointer;
+      accent-color: #2d1ed7;
+    }
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 20px;
+      cursor: pointer;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    a:hover {
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <input type="radio" name="optionScreen" id="SignIn" hidden checked />
+    <input type="radio" name="optionScreen" id="SignUp" hidden />
+
+    <section>
+      <div id="logo">
+        <img
+          src="https://64.media.tumblr.com/83ee3e663e2d988ca9c2bb64a0f0f38b/tumblr_mgsmybPbMq1qfwzeuo1_500.gif"
+          alt="Spotify-Logo"
+          width="50"
+        />
+        <h1>Sonic</h1>
+      </div>
+
+      <nav>
+        <label for="SignIn">Sign In</label>
+        <label for="SignUp">Sign Up</label>
+      </nav>
+
+      <form method="post" id="SignUpFormData">
+        {% csrf_token %}
+        <input
+          type="text"
+          id="name"
+          placeholder="Name Complete"
+          name="{{ form.username.html_name }}"
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="E-mail"
+          name="{{ form.email.html_name }}"
+        />
+        <input
+          type="password"
+          id="password1"
+          placeholder="New Password"
+          name="{{ form.password1.html_name }}"
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="New Password"
+          name="{{ form.password2.html_name }}"
+        />
+        <span>
+          <input type="checkbox" id="staySingedUp" checked />
+          <label for="staySingedUp">stay Signed In</label>
+        </span>
+        <button type="submit" title="Sing Up">Sing Up</button>
+      </form>
+    </section>
+  </body>
+</html>
