@@ -1,6 +1,6 @@
 {
   "workbench.iconTheme": "quill-icons",
-  "workbench.colorTheme": "Dracula",
+  "workbench.colorTheme": "CodeSandbox",
   "editor.fontFamily": "'Fira Code', 'Monaco', 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.tabSize": 2,

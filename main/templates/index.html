@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,12 +12,20 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      /* font-family: 'Poppins', sans-serif; */
     }
 
     body {
-      background: #ecd23a;
       padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #2b2b2b;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.1px;
     }
 
     ::selection {
@@ -25,8 +34,8 @@
     }
 
     .wrapper {
-      max-width: 450px;
-      margin: 150px auto;
+      max-width: 500px;
+      width: 100%;
     }
 
     .wrapper .search-input {
@@ -94,8 +103,237 @@
       color: #e4ff4b;
       cursor: pointer;
     }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .music-container {
+      display: flex;
+      align-items: center;
+      align-self: center;
+      height: 80px;
+      padding: 0 15px 0 15px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4);
+    }
+    .soundwave-container {
+      height: 40px;
+      width: auto;
+      display: flex;
+      align-items: flex-end;
+      margin-right: 15px;
+    }
+    .bar {
+      width: 6px;
+      height: 100%;
+      background: #231dd0;
+      border-radius: 2px;
+      margin: 0 2px;
+      animation: equalizer 1.9s steps(20, end) infinite;
+    }
+    .bar:nth-child(1) {
+      animation-duration: 1.9s;
+    }
+    .bar:nth-child(2) {
+      animation-duration: 2s;
+    }
+    .bar:nth-child(3) {
+      animation-duration: 1.7s;
+    }
+    .bar:nth-child(4) {
+      animation-duration: 2.1s;
+    }
+
+    @keyframes equalizer {
+      0% {
+        height: 60%;
+      }
+      4% {
+        height: 50%;
+      }
+      8% {
+        height: 40%;
+      }
+      12% {
+        height: 30%;
+      }
+      16% {
+        height: 20%;
+      }
+      20% {
+        height: 30%;
+      }
+      24% {
+        height: 40%;
+      }
+      28% {
+        height: 10%;
+      }
+      32% {
+        height: 40%;
+      }
+      36% {
+        height: 60%;
+      }
+      40% {
+        height: 20%;
+      }
+      44% {
+        height: 40%;
+      }
+      48% {
+        height: 70%;
+      }
+      52% {
+        height: 30%;
+      }
+      56% {
+        height: 10%;
+      }
+      60% {
+        height: 30%;
+      }
+      64% {
+        height: 50%;
+      }
+      68% {
+        height: 60%;
+      }
+      72% {
+        height: 70%;
+      }
+      76% {
+        height: 80%;
+      }
+      80% {
+        height: 70%;
+      }
+      84% {
+        height: 60%;
+      }
+      88% {
+        height: 50%;
+      }
+      92% {
+        height: 60%;
+      }
+      96% {
+        height: 70%;
+      }
+      100% {
+        height: 80%;
+      }
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      width: 300px;
+    }
+    .albumart {
+      background-image: url('https://i.scdn.co/image/ab67616d0000b2738181d8122c4f608df8ef5a4f');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 60px;
+      width: 60px;
+      margin-right: 15px;
+      border-radius: 4px;
+    }
+    .title {
+      color: #231dd0;
+      font-size: 1.3rem;
+      padding: 0;
+      margin: 2px 0 6px;
+    }
+    .artist {
+      font-size: 1rem;
+      padding: 0;
+      margin: 2px 0;
+      color: #baaebc;
+    }
+    .artist:hover {
+      border-bottom: 1px solid;
+      margin-top: -0.5px;
+      cursor: pointer;
+    }
+    .animate {
+      animation: heart-burst 0.8s steps(28) forwards;
+    }
+
+    @keyframes heart-burst {
+      0% {
+        background-position: left;
+      }
+      100% {
+        background-position: right;
+      }
+    }
+    .like-container {
+      height: 65px;
+      width: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .like {
+      background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png');
+      background-repeat: no-repeat;
+      background-size: 2900%;
+      background-position: left;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+    .search-input {
+      background: #fff;
+      width: 100%;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+    }
+    .autocom-box::-webkit-scrollbar {
+      width: 12px; /* Width of the vertical scrollbar */
+      background: #231dd0; /* Color of the scroll thumb */
+      border-radius: 999999px;
+    }
+
+    .autocom-box::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color of the scrollbar track */
+    }
+
+    .autocom-box::-webkit-scrollbar-thumb {
+      background: #231dd0; /* Color of the scroll thumb */
+      border-radius: 999999px;
+    }
+
+    .autocom-box::-webkit-scrollbar-thumb:hover {
+      background: #231dd0; /* Color of the scroll thumb on hover */
+    }
+
+    /* This will style the scrollbar for Firefox */
+    .autocom-box {
+      scrollbar-width: thin; /* Width of the scrollbar */
+      scrollbar-color: #231dd0 #f1f1f1; /* Color of the scrollbar */
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      background-color: transparent;
+    }
   </style>
   <body>
+    <img
+      src="{% static 'sonic.gif' %}"
+      alt="logo"
+      width="60"
+      height="60"
+      style="position: absolute !important; top: 0; left: 0; margin: 10px"
+    />
     <div class="wrapper">
       <div class="search-input">
         <a href="" target="_blank" hidden></a>
@@ -107,100 +345,76 @@
       </div>
     </div>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     // getting all required elements
     const searchWrapper = document.querySelector('.search-input');
     const inputBox = searchWrapper.querySelector('input');
     const suggBox = searchWrapper.querySelector('.autocom-box');
-    const icon = searchWrapper.querySelector('.icon');
-    let linkTag = searchWrapper.querySelector('a');
-    let webLink;
+    searchWrapper.classList.add('active');
 
-    // if user press any key and release
-    inputBox.onkeyup = e => {
-      let userData = e.target.value; //user enetered data
-      let emptyArray = [];
-      if (userData) {
-        icon.onclick = () => {
-          webLink = `https://www.google.com/search?q=${userData}`;
-          linkTag.setAttribute('href', webLink);
-          linkTag.click();
-        };
-        emptyArray = suggestions.filter(data => {
-          //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
-          return data
-            .toLocaleLowerCase()
-            .startsWith(userData.toLocaleLowerCase());
+    $(document).ready(function () {
+      let query = $('input');
+      let searchResult = {};
+      query.on('input', function () {
+        $.ajax({
+          url: "{% url 'Search' %}",
+          type: 'POST',
+          data: {
+            query: $(this).val(),
+          },
+          success: function (data) {
+            console.log(data);
+            if (!data.searchResults.error) {
+              searchResult = data.searchResults.tracks.items;
+
+              $('.autocom-box').empty();
+              searchResult?.forEach(element => {
+                $('.autocom-box').append(`<li>
+                    <a href='/track/${element.id}'>
+                    
+                        <div class="music-container">
+                          <div class="soundwave-container">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                          </div>
+                          <div class="song">
+                            <div class='albumart'></div>
+                            <div class="musicinfo">
+                              <p class="title">${element.name}</p>
+                              <p class="artist">${element.artists[0].name}</p>
+                            </div>
+                          </div>
+                          <div class="like-container">
+                            <span class="like"></span>
+                          </div>
+                        </div>
+                     
+                      </a>                   
+                    </li>`);
+
+                $('.albumart').css(
+                  'background-image',
+                  `url(${element.album.images[0].url})`
+                );
+              });
+            } else {
+              $('.autocom-box').empty();
+            }
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
+          },
         });
-        emptyArray = emptyArray.map(data => {
-          // passing return data inside li tag
-          return (data = `<li>${data}</li>`);
-        });
-        searchWrapper.classList.add('active'); //show autocomplete box
-        showSuggestions(emptyArray);
-        let allList = suggBox.querySelectorAll('li');
-        for (let i = 0; i < allList.length; i++) {
-          //adding onclick attribute in all li tag
-          allList[i].setAttribute('onclick', 'select(this)');
-        }
-      } else {
-        searchWrapper.classList.remove('active'); //hide autocomplete box
-      }
-    };
+      });
+    });
 
-    function select(element) {
-      let selectData = element.textContent;
-      inputBox.value = selectData;
-      icon.onclick = () => {
-        webLink = `https://www.google.com/search?q=${selectData}`;
-        linkTag.setAttribute('href', webLink);
-        linkTag.click();
-      };
-      searchWrapper.classList.remove('active');
-    }
-
-    function showSuggestions(list) {
-      let listData;
-      if (!list.length) {
-        userValue = inputBox.value;
-        listData = `<li>${userValue}</li>`;
-      } else {
-        listData = list.join('');
-      }
-      suggBox.innerHTML = listData;
-    }
-
-    // You Create new javascript file, File Name  suggestions., and Paste the Code
-
-    let suggestions = [
-      'Channel',
-      'Mr Code Box',
-      'Vs Code',
-      'Instagram',
-      'YouTube',
-      'YouTuber',
-      'YouTube Channel',
-      'Blogger',
-      'Please Like, Share & Subscribe',
-      'Bollywood',
-      'Vlogger',
-      'Vechiles',
-      'Facebook',
-      'Freelancer',
-      'Facebook Page',
-      'Designer',
-      'Developer',
-      'Web Designer',
-      'Web Developer',
-      'Login Form in HTML & CSS',
-      'How to learn HTML & CSS',
-      'How to learn JavaScript',
-      'How to become Freelancer',
-      'How to become Web Designer',
-      'How to start Gaming Channel',
-      'How to start YouTube Channel',
-      'What does HTML stands for?',
-      'What does CSS stands for?',
-    ];
+    $(function () {
+      $('.like').click(function () {
+        $(this).toggleClass('animate');
+      });
+    });
   </script>
 </html>
